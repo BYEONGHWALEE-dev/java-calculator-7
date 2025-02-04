@@ -31,7 +31,7 @@ public class Application {
             finalList = calculFunc.extractNumber(tempList, sepList);
             resultNum = calculFunc.addAllNum(finalList);
 
-            System.out.println(resultNum);
+            System.out.println("결과 : " + resultNum);
         }
         // 구분자 지정일 때
         else {
@@ -44,7 +44,7 @@ public class Application {
             finalList = calculFunc.extractNumber(tempList, sepList);
             resultNum = calculFunc.addAllNum(finalList);
 
-            System.out.println(resultNum);
+            System.out.println("결과 : " + resultNum);
 
         }
 
@@ -55,7 +55,7 @@ public class Application {
 
     public static void putIntoArray(String number, List<Character> numList) {
 
-        for(char c : number.toCharArray()) {
+        for (char c : number.toCharArray()) {
             numList.add(c);
         }
     }

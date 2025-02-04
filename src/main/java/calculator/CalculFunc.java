@@ -28,6 +28,8 @@ public class CalculFunc {
 
                 if(Character.isDigit(c)){
                     tempNum.add(Character.getNumericValue(c));
+
+
                 }
                 else{
                     // 구분자 두번 나오거나 첫번째로 구분자 나오는것 금지
@@ -51,8 +53,22 @@ public class CalculFunc {
                 }
 
             }
+
+            // 만약 for문이 끝나고 숫자가 tempNum에 남아있으면 finalNum에 넣어야 됨
+            // 예를 들어 마지막 1;23 일 경우 23은 뒤에 구분자를 만나지 못해서 finalNum에 들어가지 않음
+            if(!tempNum.isEmpty()){
+
+                int temp = 0;
+                int tempNumSize = tempNum.size();
+                for(int i = 0; i < tempNumSize; i++){
+                    temp += tempNum.get(i) * NumPower.tenPower(tempNumSize - 1 - i);
+                }
+
+                finalNum.add(temp);
+            }
         }
         return finalNum;
+
     }
 
     // 더하는 함수
@@ -71,16 +87,15 @@ public class CalculFunc {
     // 구분자 지정인지 아닌지 검증(true = 구분자 지정)
     public boolean validateList(List<Character> numList) {
 
-        boolean result = true;
-
         if(numList.size() >= 4) {
             char a = numList.get(0);
             char b = numList.get(1);
             char c = numList.get(3);
+            char d = numList.get(4);
 
             char sep = numList.get(2);
 
-            if(a == '/' && b == '/' && c == '\n' && !Character.isDigit(sep)) {
+            if(a == '/' && b == '/' && c == '\\' && d =='n' && !Character.isDigit(sep)) {
 
                 return true;
             }
@@ -102,7 +117,7 @@ public class CalculFunc {
         char sep = numList.get(2);
 
         // 구분자 지정파트 삭제
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 5; i++){
             numList.removeFirst();
         }
 
